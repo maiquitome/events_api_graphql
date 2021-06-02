@@ -1,11 +1,16 @@
 defmodule EventsWeb.Graphql.Resolver do
   alias EventsWeb.Graphql.EventInfo
 
+  # ACTIVITIES_GUESTS
+  def get_activity_guests(args) do
+    {:ok, EventInfo.get_activity_guests(args.id)}
+  end
+
+  # GUESTS
   def guests(_args, _info) do
     {:ok, EventInfo.get_guests()}
   end
 
-  # adicione  essa função
   def create_guest(args, _info) do
     with {:ok, guest} <- EventInfo.create_guest(args) do
       {:ok, guest}
@@ -13,6 +18,7 @@ defmodule EventsWeb.Graphql.Resolver do
       {:error, _reason} -> {:error, "Fail to create a new guest!!!"}
     end
   end
+
   # ACTIVITIES
   def activities(_args, _info) do
     {:ok, EventInfo.get_activities()}
