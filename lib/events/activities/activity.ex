@@ -3,7 +3,7 @@ defmodule Events.Activities.Activity do
   import Ecto.Changeset
 
   schema "activities" do
-    field :date_event, :date
+    field :activity_date, :string
     field :name, :string
 
     timestamps()
@@ -12,7 +12,7 @@ defmodule Events.Activities.Activity do
   @doc false
   def changeset(activity, attrs) do
     activity
-    |> cast(attrs, [:date_event, :name])
-    |> validate_required([:date_event, :name])
+    |> cast(attrs, [:activity_date, :name])
+    |> validate_required([:activity_date, :name])
   end
 end

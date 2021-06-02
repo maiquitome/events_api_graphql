@@ -3,7 +3,7 @@ defmodule Events.Repo.Migrations.CreateActivities do
 
   def change do
     create table(:activities) do
-      add :date_event, :date
+      add :activity_date, :string
       add :name, :string
 
       timestamps()
